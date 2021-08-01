@@ -396,6 +396,7 @@ namespace mbe
 		private ContextMenuStrip contextMenuOnView;
 		private ToolStripMenuItem contextMenuProperty;
 		private ToolStripMenuItem contextMenuAddNode;
+		private ToolStripMenuItem contextMenuSetGridPitch;
 		private ToolStripSeparator toolStripSeparator1;
 		private ToolStripMenuItem contextMenuCut;
 		private ToolStripMenuItem contextMenuCopy;
@@ -2228,6 +2229,11 @@ namespace mbe
 			releaseTempOnMouseDown = false;
             movedTempData = false;
 
+            if (e.Button == MouseButtons.Middle)
+            {
+                AddNode();
+            }
+
 			if(e.Button == MouseButtons.Right) {
 				if (modeMajor == MbeView.ModeMajor.SelectorMode) {
 					EnableContextMenu(true);
@@ -3023,6 +3029,7 @@ namespace mbe
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.contextMenuOnView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuAddNode = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuSetGridPitch = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuCut = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -3055,6 +3062,7 @@ namespace mbe
             // 
             this.contextMenuOnView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextMenuAddNode,
+            this.contextMenuSetGridPitch,
             this.toolStripSeparator1,
             this.contextMenuCut,
             this.contextMenuCopy,
@@ -3074,6 +3082,13 @@ namespace mbe
             this.contextMenuAddNode.Size = new System.Drawing.Size(193, 22);
             this.contextMenuAddNode.Text = "AddNode";
             this.contextMenuAddNode.Click += new System.EventHandler(this.OnContextMenuAddNode);
+            // 
+            // MenuSetGridValue
+            // 
+            this.contextMenuSetGridPitch.Name = "contextMenuSetGridValue";
+            this.contextMenuSetGridPitch.Size = new System.Drawing.Size(193, 22);
+            this.contextMenuSetGridPitch.Text = "Set &grid pitch...";
+            this.contextMenuSetGridPitch.Click += new System.EventHandler(this.OnMenuSetGridValue);
             // 
             // toolStripSeparator1
             // 
@@ -3862,14 +3877,31 @@ namespace mbe
 			contextMenuPaste.Enabled = Document.CanPaste();
 
             setContextMenuOption();
-		}
+        }
 
-		private void OnContextMenuAddNode(object sender, EventArgs e)
+        private void OnContextMenuAddNode(object sender, EventArgs e)
 		{
 			AddNode();
 		}
 
-		private void OnContextMenuProperty(object sender, EventArgs e)
+        private void OnMenuSetGridValue(object sender, EventArgs e)
+        {
+            SetGridForm dlg = new SetGridForm();
+
+            dlg.CurrentGridInfo = this.CurrentGridInfo;
+            //dlg.MyStandardGrid = mbeView.MyStandardGrid;
+            DialogResult retv = dlg.ShowDialog();
+            if (retv == DialogResult.OK)
+            {
+                this.SetCurrentGridInfo(dlg.CurrentGridInfo);
+                ((MainForm)this.Parent).DisplayGridValue();
+            }
+
+
+            //System.Diagnostics.Debug.WriteLine("OnMenuSetGridValue "+retv);
+        }
+
+        private void OnContextMenuProperty(object sender, EventArgs e)
 		{
 			EditProperty();
 		}

@@ -19,12 +19,12 @@ namespace mbe
         /// <summary>
         /// ワークエリアのデフォルトの幅(0.0001mm単位)
         /// </summary>
-        public const int WORK_AREA_DEFAULT_WIDTH = 3000000;
+        public const int WORK_AREA_DEFAULT_WIDTH = 5000000;
 
         /// <summary>
         /// ワークエリアの設定可能な最小幅(0.0001mm単位)
         /// </summary>
-        public const int WORK_AREA_MIN_WIDTH = 500000;
+        public const int WORK_AREA_MIN_WIDTH = 300000;
 
         /// <summary>
         ///ワークエリアの設定可能な最大高(0.0001mm単位) 
@@ -34,12 +34,12 @@ namespace mbe
         /// <summary>
         /// ワークエリアのデフォルトの高さ(0.0001mm単位)
         /// </summary>
-        public const int WORK_AREA_DEFAULT_HEIGHT = 3000000;
+        public const int WORK_AREA_DEFAULT_HEIGHT = 5000000;
 
         /// <summary>
         ///ワークエリアの設定可能な最小高(0.0001mm単位) 
         /// </summary>
-        public const int WORK_AREA_MIN_HEIGHT = 500000;
+        public const int WORK_AREA_MIN_HEIGHT = 300000;
 
 
 

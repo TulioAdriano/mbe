@@ -74,21 +74,21 @@ namespace mbe
 		/// </summary>
 		public static readonly string[] nameTable = 
 		{ 
-			"PTH",
-            "MMC",
-			"PLC",
-			"STC", 
-			"CMP",
-            "L2",
-            "L3",
-			"SOL", 
-			"STS", 
-			"PLS",
+			"PTH",   
+            "MMC",   
+			"PLC", //PLC -> GTO
+			"STC", //STC -> GTS
+			"CMP", //CMP -> GTL
+            "L2",  //L2  -> GL1
+            "L3",  //L3  -> GL2
+			"SOL", //SOL -> GBL
+			"STS", //STS -> GBS
+			"PLS", //PLS -> GBO
             "MMS",
-			"DIM",
+			"DIM", //DIM -> GML
 			"DRL",
-			"DOC"
-		};
+            "DOC"
+        };
 
 		/// <summary>
 		/// レイヤー ビット値テーブル

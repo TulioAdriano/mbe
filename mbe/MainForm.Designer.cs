@@ -270,6 +270,7 @@
             // MenuFileDrc
             // 
             this.MenuFileDrc.Name = "MenuFileDrc";
+            this.MenuFileDrc.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.MenuFileDrc.Size = new System.Drawing.Size(174, 22);
             this.MenuFileDrc.Text = "&DRC";
             this.MenuFileDrc.Click += new System.EventHandler(this.OnMenuFileDrc);
@@ -505,6 +506,7 @@
             // MenuEditUpdateFillPolygon
             // 
             this.MenuEditUpdateFillPolygon.Name = "MenuEditUpdateFillPolygon";
+            this.MenuEditUpdateFillPolygon.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
             this.MenuEditUpdateFillPolygon.Size = new System.Drawing.Size(183, 22);
             this.MenuEditUpdateFillPolygon.Text = "Update FillPolygon";
             this.MenuEditUpdateFillPolygon.Click += new System.EventHandler(this.OnMenuEditUpdateFillPolygon);
@@ -551,6 +553,7 @@
             // MenuViewPolygonFrameMode
             // 
             this.MenuViewPolygonFrameMode.Name = "MenuViewPolygonFrameMode";
+            this.MenuViewPolygonFrameMode.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.MenuViewPolygonFrameMode.Size = new System.Drawing.Size(197, 22);
             this.MenuViewPolygonFrameMode.Text = "&Polygon frame mode";
             this.MenuViewPolygonFrameMode.Click += new System.EventHandler(this.OnMenuViewPolygonFrameMode);

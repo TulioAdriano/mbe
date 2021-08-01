@@ -422,7 +422,7 @@ namespace mbe
             //System.Diagnostics.Debug.WriteLine("OnMenuSetGridValue "+retv);
 		}
 
-        private void DisplayGridValue()
+        public void DisplayGridValue()
         {
             double x = (double)(mbeView.CurrentGridInfo.Horizontal) / 10000;
             double y = (double)(mbeView.CurrentGridInfo.Vertical) / 10000;

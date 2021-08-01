@@ -22,6 +22,23 @@ namespace mbe
 		public const int CAMOUT_XOFFSET = 25400;	//2.54mm
 		public const int CAMOUT_YOFFSET = 25400;	//2.54mm
 
+        /// <summary>
+        /// Remaps layer name to adequate Gerber extension
+        /// </summary>
+        Dictionary<string, string> GerberExtRemap = new Dictionary<string, string>()
+        {
+            ["PLC"] = "GTO", //PLC -> GTO
+            ["STC"] = "GTS", //STC -> GTS
+            ["CMP"] = "GTL", //CMP -> GTL
+            ["L2"] =  "GL1", //L2  -> GL1
+            ["L3"] =  "GL2", //L3  -> GL2
+            ["SOL"] = "GBL", //SOL -> GBL
+            ["STS"] = "GBS", //STS -> GBS
+            ["PLS"] = "GBO", //PLS -> GBO
+            ["DIM"] = "GML"  //DIM -> GML
+        };               
+
+
 		/// <summary>
 		/// ガーバーファイルのヘッダー
 		/// </summary>
@@ -416,8 +433,8 @@ namespace mbe
 		{
 			CamOutResult result = new CamOutResult();
 			result.code = CamOutResult.ResultCode.NOERROR;
-			string outpath = Path.ChangeExtension(path, "DRI");
-			StreamWriter streamWriter = null;
+			string outpath = Path.ChangeExtension(path, "DRI"); //DRI -> delete
+            StreamWriter streamWriter = null;
 			try {
 				streamWriter = new StreamWriter(outpath);
                 if (m_CamOutUnit == CamOUtUnit.INCH) {
@@ -503,8 +520,8 @@ namespace mbe
 			CamOutResult result = new CamOutResult();
 			result.code = CamOutResult.ResultCode.NOERROR;
 
-			string outpath = Path.ChangeExtension(path,"DRD");
-			StreamWriter streamWriter = null;
+			string outpath = Path.ChangeExtension(path,"TXT"); //DRD -> TXT
+            StreamWriter streamWriter = null;
 			try {
 				streamWriter = new StreamWriter(outpath);
 				int n;
@@ -539,9 +556,17 @@ namespace mbe
 		{
 			CamOutResult result = new CamOutResult();
 			result.code = CamOutResult.ResultCode.NOERROR;
-
-			string outpath = Path.ChangeExtension(path, MbeLayer.GetLayerName(layer));
-			StreamWriter streamWriter = null;
+            string ext = MbeLayer.GetLayerName(layer);
+            string outpath = string.Empty;
+            if (GerberExtRemap.ContainsKey(ext))
+            {
+                outpath = Path.ChangeExtension(path, GerberExtRemap[MbeLayer.GetLayerName(layer)]);
+            }
+            else
+            {
+                outpath = Path.ChangeExtension(path, MbeLayer.GetLayerName(layer));
+            }
+            StreamWriter streamWriter = null;
 			try {
 				streamWriter = new StreamWriter(outpath);
 				int n;
